@@ -257,12 +257,13 @@ We can filter out the _joy_ sentiment from the nrc lexicon and then look at how 
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
-tidy_books %>%
+joywords = tidy_books %>%
   filter(title == "Emma") %>%
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
 
 ```
+(ebb: To view a full list, name the variable: We gave this the name: joywords = tidy_books, and then ran it in the Console, and typed View(joywords)  )
 
 If a book starts out with darker themes that are overcome as the story progresses the total sentiment is probably a boring zero.  If we look at every single word, then we get a very erratic story for sentiment.  Somewhere in the middle is an appropriate amount of text to consider in one shot.  Here let's go with 80 lines at a time.  We match the individual token words with words in  the bing sentiment lexicon through an _inner join_ statement.  Then we just need to count the positive or negative sentiments in chunks of 80 lines.
 

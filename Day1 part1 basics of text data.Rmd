@@ -121,7 +121,7 @@ More MacBeth available from [Gutenberg]{http://www.gutenberg.org/files/1533/1533
 ```{r MacBeth}
 
 MacBethAct1Scene1 = c("ACT I
-
+m
 SCENE I. An open Place.
 
  Thunder and Lightning. Enter three Witches.
@@ -255,7 +255,7 @@ Macbeth %>%
 Macbeth %>% 
   unnest_tokens(      output = ngrams,input = text, token = "ngrams",n=2)  %>%
   count(ngrams) %>%
-  filter(grepl("act (i|x|v|l|c|d|m)", ngrams))
+  filter(grepl("act [ixvlcdm]", ngrams))
 ```
 The _filter_ command is looking for a logical (TRUE/FALSE) condition.  The condition is determined through _grepl_ (more about this later) to look for the pattern in quotes.
 
